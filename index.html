@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        .calculator {
+            margin: auto;
+            border: 2px solid rgb(187, 164, 164);
+            width: 283px;
+            height: 445px;
+            border-radius: 10px;
+            position: relative;
+            top: 50px;
+            background-color: black;
+            box-shadow: 0px 0px 3px 3px rgb(77, 60, 60);
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            margin: 5px;
+            font-size: 1.7rem;
+            height: 57px;
+            width: 57px;
+            border-radius: 50%;
+            background-color: rgb(65, 67, 70);
+            color: white;
+            border: 2px solid black;
+            /* box-shadow: 0px 0px 2px 2px rgb(87, 73, 87); */
+        }
+
+        #equal {
+            background-color: rgb(230, 42, 21);
+        }
+
+        #ac {
+            background-color: rgb(230, 42, 21);
+        }
+
+        .operator {
+            background-color: rgb(242, 158, 19);
+        }
+
+        .inpt {
+            width: 300px;
+            height: 100px;
+            margin: auto;
+        }
+
+        .inpt input {
+            width: 268px;
+            height: 88px;
+            border-radius: 10px;
+            margin: 2px;
+            font-size: 1.5rem;
+            background-color: rgb(188, 198, 187);
+        }
+
+        .out {
+            position: absolute;
+            top: 65px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="calculator">
+
+        <div class="inpt">
+            <input class="input" type="text">
+            <output class="out"></output>
+        </div>
+        <div class="row">
+            <button class="but" id="ac">AC</button>
+            <button class="but operator">%</button>
+            <button class="but operator">/</button>
+            <button class="but operator">*</button>
+        </div>
+        <div class="row">
+            <button class="but">7</button>
+            <button class="but">8</button>
+            <button class="but">9</button>
+            <button class="but operator">-</button>
+        </div>
+        <div class="row">
+            <button class="but">4</button>
+            <button class="but">5</button>
+            <button class="but">6</button>
+            <button class="but operator">+</button>
+        </div>
+        <div class="row">
+            <button class="but">1</button>
+            <button class="but">2</button>
+            <button class="but">3</button>
+            <button class="but" id="equal">=</button>
+        </div>
+        <div class="row">
+            <button class="but">.</button>
+            <button class="but">0</button>
+            <button class="but">(</button>
+            <button class="but">)</button>
+        </div>
+    </div>
+</body>
+<script>
+    let screen = "";
+    let buttons = document.querySelectorAll('.but');
+    let output = document.querySelector('.out');
+    console.log(screen);
+    console.log(buttons);
+    console.log(output);
+    Array.from(buttons).forEach(button => {
+        button.addEventListener('click', (a) => {
+            if(a.target.innerHTML=='='){
+                output=eval(screen);
+            document.querySelector('.out').value=output;
+
+            }
+            else if(a.target.innerHTML=='AC'){
+                output="";
+                screen="";
+                document.querySelector('.out').value=output;
+                document.querySelector('.input').value=screen;
+            }
+            else{
+            console.log(a.target);
+            screen = screen + a.target.innerHTML;
+            document.querySelector('.input').value=screen;
+            }
+        })
+    });
+
+</script>
+
+</html>
